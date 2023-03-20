@@ -50,7 +50,7 @@ sudo smbpasswd -a pracownik1
 > hasło
 
 ^ prawa wykonywania, odczytu
-sudo setfacl -R -m "u:pracownik1:rw" /samba/dysk
+sudo setfacl -R -m "u:pracownik1:rx" /samba/dysk
 
 mkdir /samba/dysk/pracownik1
 sudo setfacl -R -m "u:pracownik1:rwx" /samba/dysk/pracownik1
