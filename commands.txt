@@ -62,7 +62,7 @@ sudo smbpasswd -a pracownik1
 mkdir /samba/dysk/pracownik1
 chown pracownik1 /samba/dysk/pracownik1
 chmod 700 /samba/dysk/pracownik1
-usermod -aG root pracownik1
+sudo usermod -a -G pracownik1 root
 
 
 
