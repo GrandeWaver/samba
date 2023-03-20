@@ -39,6 +39,8 @@ sudo systemctl restart smbd
 # ROOT
 sudo smbpasswd -a root
 > hasło
+mkdir /samba/dysk/root
+sudo setfacl -R -m "u:root:rwx" /samba/dysk/root
 
 # FOLDER DLA WSZYSTKICH
 sudo mkdir -p /samba/dysk/udostępnione
