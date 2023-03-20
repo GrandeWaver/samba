@@ -17,6 +17,7 @@ systemctl status smbd --no-pager -l
 sudo systemctl enable --now smbd
 sudo ufw allow samba
 
+sudo mkdir /samba
 sudo mkdir /samba/dysk
 chmod 755 /samba/dysk
 sudo nano /etc/samba/smb.conf
