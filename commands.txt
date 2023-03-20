@@ -19,7 +19,6 @@ sudo ufw allow samba
 
 sudo mkdir /samba
 sudo mkdir /samba/dysk
-chmod 755 /samba/dysk
 sudo nano /etc/samba/smb.conf
 
 [dysk]
@@ -32,6 +31,10 @@ guest ok = no
 map hidden = yes
 hide unreadable = yes
 # hide unwriteable files = yes
+create mask = 0755
+force create mode = 0770
+directory mask = 0770
+force directory mode = 0770
 
 # szybki check
 testparm
@@ -59,6 +62,7 @@ sudo smbpasswd -a pracownik1
 mkdir /samba/dysk/pracownik1
 chown pracownik1 /samba/dysk/pracownik1
 chmod 700 /samba/dysk/pracownik1
+usermod -aG root pracownik1
 
 
 
