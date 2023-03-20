@@ -37,10 +37,9 @@ read only = no
 writable = yes
 browseable = yes
 guest ok = no
-valid users = @root @pracownik1
+# valid users = @root @pracownik1
 
 # szybki check
 testparm
 # restart
 sudo systemctl restart smbd
-testparm
