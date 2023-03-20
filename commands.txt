@@ -54,6 +54,9 @@ sudo mkdir /samba/dysk/udostępnione
 chmod 755 /samba/dysk/udostępnione
 chmod -R 777 /samba/dysk/udostępnione/
 
+#GRUPA pracownicy
+groupadd pracownicy
+
 # PORACOWNIK1
 sudo adduser pracownik1
 > hasło
