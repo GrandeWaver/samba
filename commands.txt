@@ -1,32 +1,20 @@
-POLECENIA:
-# system
+KOK 1:
+- założenie konta Digital Dcean
+KOK 2:
+- zbudowanie dropletu
+- dodanie pamięci
+KROK 3: 
+- konfiguracja:
 
+POLECENIA:
 sudo apt-get update
 sudo apt-get upgrade --yes
-
-# samba
+apt-get install acl
 sudo apt install samba --yes
 systemctl status smbd --no-pager -l
 sudo systemctl enable --now smbd
 sudo ufw allow samba
 
-^ add root
-sudo smbpasswd -a root
-> hasło
-
-
-^ add pracownik1
-sudo adduser pracownik1
-> hasło
-sudo smbpasswd -a pracownik1
-> hasło
-
-^ prawa wykonywania, odczytu
-apt-get install acl
-sudo setfacl -R -m "u:pracownik1:rwx" /samba/dysk
-
-
-# configuration
 sudo mkdir -p /samba/dysk
 sudo nano /etc/samba/smb.conf
 
@@ -43,3 +31,26 @@ guest ok = no
 testparm
 # restart
 sudo systemctl restart smbd
+
+
+# ROOT
+sudo smbpasswd -a root
+> hasło
+
+# FOLDER DLA WSZYSTKICH
+sudo mkdir -p /samba/dysk/udostępnione
+
+# PORACOWNIK1
+sudo adduser pracownik1
+> hasło
+sudo smbpasswd -a pracownik1
+> hasło
+
+^ prawa wykonywania, odczytu
+sudo setfacl -R -m "u:pracownik1:r" /samba/dysk
+
+mkdir /samba/dysk/pracownik1
+sudo setfacl -R -m "u:pracownik1:rwx" /samba/dysk/pracownik1
+
+
+
