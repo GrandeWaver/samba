@@ -7,8 +7,40 @@ sudo apt-get upgrade --yes
 # samba
 sudo apt install samba --yes
 systemctl status smbd --no-pager -l
-systemctl status smbd --no-pager -l
 sudo systemctl enable --now smbd
 sudo ufw allow samba
 
+^ add root
+sudo smbpasswd -a root
+> hasło
 
+
+^ add pracownik1
+sudo adduser pracownik1
+> hasło
+sudo smbpasswd -a pracownik1
+> hasło
+
+^ prawa wykonywania, odczytu
+apt-get install acl
+sudo setfacl -R -m "u:pracownik1:rwx" /samba/dysk
+
+
+# configuration
+sudo mkdir -p /samba/dysk
+sudo nano /etc/samba/smb.conf
+
+[dysk]
+comment = Dysk udostępniony pracownikom
+path = /samba/dysk
+read only = no
+writable = yes
+browseable = yes
+guest ok = no
+valid users = @root @pracownik1
+
+# szybki check
+testparm
+# restart
+sudo systemctl restart smbd
+testparm
