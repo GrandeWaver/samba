@@ -18,7 +18,8 @@ systemctl status smbd --no-pager -l
 sudo systemctl enable --now smbd
 sudo ufw allow samba
 
-sudo mkdir -p /samba/dysk
+sudo mkdir /samba/dysk
+chmod 755 /samba/dysk
 sudo nano /etc/samba/smb.conf
 
 [dysk]
@@ -40,10 +41,11 @@ sudo systemctl restart smbd
 sudo smbpasswd -a root
 > hasło
 mkdir /samba/dysk/root
-sudo setfacl -R -m "u:root:rwx" /samba/dysk/root
+chmod 700 /samba/dysk/root
 
 # FOLDER DLA WSZYSTKICH
 sudo mkdir -p /samba/dysk/udostępnione
+chmod 777 /samba/dysk
 
 # PORACOWNIK1
 sudo adduser pracownik1
@@ -51,11 +53,10 @@ sudo adduser pracownik1
 sudo smbpasswd -a pracownik1
 > hasło
 
-^ prawa wykonywania, odczytu
-sudo setfacl -R -m "u:pracownik1:rx" /samba/dysk
-
 mkdir /samba/dysk/pracownik1
-sudo setfacl -R -m "u:pracownik1:rwx" /samba/dysk/pracownik1
+chown pracownik1 /samba/dysk/pracownik1
+chown :pracownik1 /samba/dysk/pracownik1
+chmod 700 /samba/dysk/pracownik1
 
 
 
