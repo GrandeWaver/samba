@@ -21,6 +21,9 @@ sudo mkdir /samba
 sudo mkdir /samba/dysk
 sudo nano /etc/samba/smb.conf
 
+[global]
+obey pam restrictions = no
+
 [dysk]
 comment = Dysk udostępniony pracownikom
 path = /samba/dysk
@@ -30,8 +33,9 @@ browseable = yes
 guest ok = no
 map hidden = yes
 hide unreadable = yes
-# hide unwriteable files = yes
+hide unwriteable files = yes
 create mask = 0755
+# jeśli user może usunąc folder: create mask = 0775
 force create mode = 0770
 directory mask = 0770
 force directory mode = 0770
@@ -66,7 +70,8 @@ sudo smbpasswd -a pracownik1
 mkdir /samba/dysk/pracownik1
 chown pracownik1 /samba/dysk/pracownik1
 chmod 770 /samba/dysk/pracownik1
-sudo usermod -a -G pracownik1 root
+chown -hR pracownik 1 /samba/dysk/pracownik1
+sudo usermod -a -G pracownicy root
 
 
 
