@@ -1,0 +1,14 @@
+POLECENIA:
+# system
+
+sudo apt-get update
+sudo apt-get upgrade --yes
+
+# samba
+sudo apt install samba --yes
+systemctl status smbd --no-pager -l
+systemctl status smbd --no-pager -l
+sudo systemctl enable --now smbd
+sudo ufw allow samba
+
+
