@@ -22,6 +22,15 @@ sudo mkdir /samba/dysk
 chmod 755 /samba/dysk
 sudo nano /etc/samba/smb.conf
 
+[global]
+map hidden = yes
+hide files = /samba/dysk/root
+hide files = /samba/dysk/pracownik1
+hide files = /samba/dysk/pracownik2
+hide files = /samba/dysk/pracownik3
+hide files = /samba/dysk/pracownik4
+hide files = /samba/dysk/pracownik5
+
 [dysk]
 comment = Dysk udostępniony pracownikom
 path = /samba/dysk
@@ -29,7 +38,6 @@ read only = no
 writable = yes
 browseable = yes
 guest ok = no
-# valid users = @root @pracownik1
 
 # szybki check
 testparm
@@ -41,11 +49,10 @@ sudo systemctl restart smbd
 sudo smbpasswd -a root
 > hasło
 mkdir /samba/dysk/root
-chmod 700 /samba/dysk/root
 
 # FOLDER DLA WSZYSTKICH
 sudo mkdir /samba/dysk/udostępnione
-chmod 777 /samba/dysk/udostępnione
+chmod -R 777 /samba/dysk/udostępnione
 
 # PORACOWNIK1
 sudo adduser pracownik1
@@ -54,8 +61,6 @@ sudo smbpasswd -a pracownik1
 > hasło
 
 mkdir /samba/dysk/pracownik1
-chown pracownik1 /samba/dysk/pracownik1
-chown :pracownik1 /samba/dysk/pracownik1
 chmod 700 /samba/dysk/pracownik1
 
 
