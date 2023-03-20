@@ -31,7 +31,7 @@ browseable = yes
 guest ok = no
 map hidden = yes
 hide unreadable = yes
-hide unwriteable files = yes
+# hide unwriteable files = yes
 
 # szybki check
 testparm
