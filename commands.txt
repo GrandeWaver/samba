@@ -44,8 +44,8 @@ mkdir /samba/dysk/root
 chmod 700 /samba/dysk/root
 
 # FOLDER DLA WSZYSTKICH
-sudo mkdir -p /samba/dysk/udostępnione
-chmod 777 /samba/dysk
+sudo mkdir /samba/dysk/udostępnione
+chmod 777 /samba/dysk/udostępnione
 
 # PORACOWNIK1
 sudo adduser pracownik1
