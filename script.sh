@@ -1,5 +1,5 @@
-sudo apt update
-sudo apt upgrade -y
+sudo apt-get update
+sudo apt-get upgrade -y
 sudo apt install samba
 systemctl status smbd --no-pager -l
 sudo systemctl enable --now smbd
