@@ -1,6 +1,5 @@
-##Komendy z pilku commands.txt
+## Komendy z pliku commands.txt
 
-## PRZYDATNE:
 net use * /delete
 
 KOK 1:
